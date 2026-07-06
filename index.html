@@ -260,6 +260,38 @@ footer{border-top:1px solid #1e1a29;padding:44px 0 36px}
 .quote-av{width:38px;height:38px;border-radius:50%;background:#534AB7;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .quote-who b{font-size:14px;color:#fff;font-weight:600;display:block}
 .quote-who span{font-size:12.5px;color:var(--txt4)}
+.scrolly{position:relative;height:640vh}
+.scrolly-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 16px}
+.scrolly-space{height:1px}
+.pwin{width:min(680px,94vw);background:#14101d;border:1px solid var(--line2);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden}
+.pwin-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.wdot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pwin-title{flex:1;text-align:center;font-size:13px;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwin-live{font-size:12px;color:var(--green)}
+.pwin-body{position:relative;height:min(420px,58vh)}
+.scene{position:absolute;inset:0;padding:20px;opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.scene.active{opacity:1;transform:none;pointer-events:auto}
+.frow{background:#221c31;border-radius:12px;padding:13px 15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.flabel{color:var(--txt4);font-size:13px;flex-shrink:0}
+.fval{color:#fff;font-size:14px;text-align:right}
+.fico{width:34px;height:34px;border-radius:9px;background:rgba(139,92,246,.14);display:flex;align-items:center;justify-content:center;color:var(--violet-l);font-size:17px;flex-shrink:0}
+.fmain{flex:1;min-width:0}
+.ft{display:block;font-size:14px;color:#fff}
+.fs{display:block;font-size:12px;color:var(--txt4)}
+.fok{color:var(--green);font-size:13px;flex-shrink:0}
+.scene-note{font-size:13px;color:var(--txt4);margin-top:14px;display:flex;align-items:center;gap:7px}
+.scene-top{font-size:13px;color:var(--txt3);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.sc4-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:14px;height:100%}
+.sc4-grid .transcript{min-height:0;overflow:hidden}
+.hired{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;text-align:center}
+.hbig{width:64px;height:64px;border-radius:50%;background:var(--green-d);display:flex;align-items:center;justify-content:center;color:var(--green-l);font-size:30px}
+.ht{font-size:18px;font-weight:600;color:#fff;margin:0}
+.hs{font-size:13.5px;color:var(--txt3);margin:0;max-width:400px}
+.scrolly-caption{text-align:center}
+.sdots{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.sdots span{width:7px;height:7px;border-radius:50%;background:#2f2843;transition:background .3s}
+.sdots span.on{background:var(--violet-l)}
+#capText{font-size:16px;color:var(--txt2);min-height:24px;max-width:480px}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -268,6 +300,9 @@ footer{border-top:1px solid #1e1a29;padding:44px 0 36px}
 @media (max-width:900px){
   .founder{grid-template-columns:1fr}
   .quotes{grid-template-columns:1fr}
+  .sc4-grid{grid-template-columns:1fr}
+  .sc4-grid .transcript{display:none}
+  .pwin-body{height:400px}
   .agents-grid{grid-template-columns:1fr}
   .agents-grid .agent-card:nth-child(1),.agents-grid .agent-card:nth-child(4){grid-column:auto}
   .hero-grid{grid-template-columns:1fr;gap:40px;padding:64px 0 90px}
@@ -355,60 +390,85 @@ footer{border-top:1px solid #1e1a29;padding:44px 0 36px}
   <div class="stat reveal" style="transition-delay:.2s"><div class="num" style="color:var(--violet-l)">1</div><div class="lbl">Tool. Mehr brauchst du nicht</div><div class="stat-src">Briefing, Sourcing, Interviews &amp; Auswertung in PARL</div></div>
 </div>
 
-<section class="sec" id="interviews">
+<section class="sec" id="interviews" style="padding:60px 0 0">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2>Gespräch. Transkript. Auswertung.<br>Ohne Toolwechsel.</h2>
-      <p>Interviews finden direkt in PARL statt. Sie werden automatisch transkribiert und gegen die Scorecard aus deinem Briefing ausgewertet.</p>
+    <div class="sec-head reveal" style="margin-bottom:10px">
+      <h2>Sieh zu, wie eine Rolle besetzt wird.</h2>
+      <p>Scroll dich durch einen echten PARL-Ablauf: vom Briefing bis zur Unterschrift.</p>
     </div>
-    <div class="iv-grid">
-      <div class="iv-card card reveal">
-        <div class="iv-title"><span>1 · Gespräch im Tool</span><span class="iv-rec"><span class="rdot"></span>REC</span></div>
-        <div class="iv-inner">
-          <div class="call-tiles">
-            <div class="call-tile"><span class="pc-av" style="background:#534AB7">AM</span><p>Alexandra</p></div>
-            <div class="call-tile speaking"><span class="pc-av" style="background:#0F6E56">LM</span><p>Lena M.</p></div>
-          </div>
-          <div class="waves" aria-hidden="true">
-            <span class="wbar" style="height:10px"></span><span class="wbar" style="height:18px;animation-delay:.1s"></span><span class="wbar" style="height:24px;animation-delay:.2s"></span><span class="wbar" style="height:14px;animation-delay:.3s"></span><span class="wbar" style="height:21px;animation-delay:.4s"></span><span class="wbar" style="height:11px;animation-delay:.5s"></span><span class="wbar" style="height:17px;animation-delay:.6s"></span><span class="wbar" style="height:13px;animation-delay:.7s"></span>
-          </div>
-          <div class="call-ctrl">
-            <span class="cbtn"><i class="ti ti-microphone" aria-hidden="true"></i></span>
-            <span class="cbtn"><i class="ti ti-video" aria-hidden="true"></i></span>
-            <span class="cbtn end"><i class="ti ti-phone-off" aria-hidden="true"></i></span>
-          </div>
+  </div>
+  <div class="scrolly" id="scrolly">
+    <div class="scrolly-sticky">
+      <div class="pwin">
+        <div class="pwin-bar">
+          <span class="wdot" style="background:#E24B4A"></span><span class="wdot" style="background:#EF9F27"></span><span class="wdot" style="background:#639922"></span>
+          <span class="pwin-title" id="pwinTitle">PARL · Neues Briefing</span>
+          <span class="pwin-live">● live</span>
         </div>
-      </div>
-      <div class="iv-card card reveal" style="transition-delay:.12s">
-        <div class="iv-title"><span>2 · Live-Transkript</span><i class="ti ti-file-text" style="color:var(--txt4)" aria-hidden="true"></i></div>
-        <div class="iv-inner"><div class="transcript" id="transcript"></div></div>
-      </div>
-      <div class="iv-card card reveal" style="transition-delay:.24s">
-        <div class="iv-title"><span>3 · KI-Auswertung</span><i class="ti ti-sparkles" style="color:var(--violet-l)" aria-hidden="true"></i></div>
-        <div class="iv-inner">
-          <div class="score-row"><div class="sr-head"><span>Kommunikation</span><span class="scNum" data-t="90" style="color:var(--green)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="90" style="background:linear-gradient(90deg,#5DCAA5,#1D9E75)"></span></span></div>
-          <div class="score-row"><div class="sr-head"><span>Tech Fit</span><span class="scNum" data-t="84" style="color:var(--blue)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="84" style="background:linear-gradient(90deg,#85B7EB,#378ADD)"></span></span></div>
-          <div class="score-row"><div class="sr-head"><span>Leadership</span><span class="scNum" data-t="76" style="color:var(--violet-l)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="76" style="background:linear-gradient(90deg,#AFA9EC,#7F77DD)"></span></span></div>
-          <p class="verdict" id="verdict"><i class="ti ti-check" aria-hidden="true"></i> Empfehlung: nächste Runde</p>
-        </div>
-      </div>
-    </div>
-    <p class="iv-note">Bewertet wird gegen die Kompetenzen aus deinem Briefing: nachvollziehbar, mit Zitaten aus dem Transkript.</p>
+        <div class="pwin-body">
 
-    <div class="shots" style="display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:56px">
-      <figure class="shot" style="margin:0">
-        <div style="background:#161221;border:1px solid var(--line2);border-radius:16px;padding:10px;overflow:hidden">
-          <img src="assets/produkt-bewerbungen.png" alt="PARL Bewerbungsübersicht mit Match-Scores" style="width:100%;border-radius:10px;display:block" onerror="this.closest('.shot').style.display='none'">
+          <div class="scene active" id="sc1">
+            <div class="frow"><span class="flabel">Rolle</span><span class="fval">Senior Product Manager</span></div>
+            <div class="frow"><span class="flabel">Standort</span><span class="fval">Berlin · Hybrid</span></div>
+            <div class="frow"><span class="flabel">Must-haves</span><span class="fval">B2B-SaaS · Discovery · Stakeholder-Management</span></div>
+            <div class="frow"><span class="flabel">Briefing-Quelle</span><span class="fval"><i class="ti ti-file-upload" aria-hidden="true"></i> anforderungsprofil.pdf</span></div>
+            <p class="scene-note"><i class="ti ti-sparkles" aria-hidden="true"></i> Zwei Minuten Aufwand. Den Rest übernimmt PARL.</p>
+          </div>
+
+          <div class="scene" id="sc2">
+            <div class="frow"><span class="fico"><i class="ti ti-file-text" aria-hidden="true"></i></span><span class="fmain"><span class="ft">Stellenanzeige</span><span class="fs">SEO-optimiert, in deinem Ton</span></span><span class="fok"><i class="ti ti-check" aria-hidden="true"></i> erstellt</span></div>
+            <div class="frow"><span class="fico"><i class="ti ti-list-details" aria-hidden="true"></i></span><span class="fmain"><span class="ft">Kompetenzprofil</span><span class="fs">6 Kompetenzen, gewichtet</span></span><span class="fok"><i class="ti ti-check" aria-hidden="true"></i> erstellt</span></div>
+            <div class="frow"><span class="fico"><i class="ti ti-messages" aria-hidden="true"></i></span><span class="fmain"><span class="ft">Interviewleitfaden</span><span class="fs">Strukturierte Fragen je Kompetenz</span></span><span class="fok"><i class="ti ti-check" aria-hidden="true"></i> erstellt</span></div>
+            <p class="scene-note"><i class="ti ti-sparkles" aria-hidden="true"></i> Automatisch aus deinem Briefing generiert.</p>
+          </div>
+
+          <div class="scene" id="sc3">
+            <p class="scene-top"><i class="ti ti-search" aria-hidden="true"></i> Sourcing-Agent: 20 Kandidat:innen gefunden und bewertet</p>
+            <div class="pc-row"><span class="pc-av" style="background:#534AB7">LM</span><span style="flex:1;min-width:0"><span class="pc-name">Lena M. · Interview geplant</span><span class="pc-track"><span class="pc-fill" data-w="92" style="background:linear-gradient(90deg,#5DCAA5,#1D9E56)"></span></span></span><span class="pc-score" style="color:var(--green)">92</span></div>
+            <div class="pc-row"><span class="pc-av" style="background:#185FA5">JK</span><span style="flex:1;min-width:0"><span class="pc-name">Jonas K. · Ansprache gesendet</span><span class="pc-track"><span class="pc-fill" data-w="78" style="background:linear-gradient(90deg,#85B7EB,#378ADD)"></span></span></span><span class="pc-score" style="color:var(--blue)">78</span></div>
+            <div class="pc-row"><span class="pc-av" style="background:#993556">SA</span><span style="flex:1;min-width:0"><span class="pc-name">Sara A. · Screening</span><span class="pc-track"><span class="pc-fill" data-w="64" style="background:linear-gradient(90deg,#ED93B1,#D4537E)"></span></span></span><span class="pc-score" style="color:var(--pink)">64</span></div>
+            <p class="scene-note"><i class="ti ti-shield-check" aria-hidden="true"></i> Priorisiert nach deinen Must-haves. Du gibst die Ansprache frei.</p>
+          </div>
+
+          <div class="scene" id="sc4">
+            <div class="sc4-grid">
+              <div>
+                <div class="call-tiles">
+                  <div class="call-tile"><span class="pc-av" style="background:#534AB7">AM</span><p>Alexandra</p></div>
+                  <div class="call-tile speaking"><span class="pc-av" style="background:#0F6E56">LM</span><p>Lena M.</p></div>
+                </div>
+                <div class="waves" aria-hidden="true"><span class="wbar" style="height:10px"></span><span class="wbar" style="height:18px;animation-delay:.1s"></span><span class="wbar" style="height:24px;animation-delay:.2s"></span><span class="wbar" style="height:14px;animation-delay:.3s"></span><span class="wbar" style="height:21px;animation-delay:.4s"></span><span class="wbar" style="height:11px;animation-delay:.5s"></span></div>
+                <p class="scene-note" style="margin-top:12px"><span class="iv-rec"><span class="rdot"></span>REC</span> Transkript läuft mit</p>
+              </div>
+              <div class="transcript" id="transcript"></div>
+            </div>
+          </div>
+
+          <div class="scene" id="sc5">
+            <div class="score-row"><div class="sr-head"><span>Kommunikation</span><span class="scNum" data-t="90" style="color:var(--green)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="90" style="background:linear-gradient(90deg,#5DCAA5,#1D9E75)"></span></span></div>
+            <div class="score-row"><div class="sr-head"><span>Fachlicher Fit</span><span class="scNum" data-t="84" style="color:var(--blue)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="84" style="background:linear-gradient(90deg,#85B7EB,#378ADD)"></span></span></div>
+            <div class="score-row"><div class="sr-head"><span>Leadership</span><span class="scNum" data-t="76" style="color:var(--violet-l)">0</span></div><span class="score-track"><span class="score-fill scBar" data-w="76" style="background:linear-gradient(90deg,#AFA9EC,#7F77DD)"></span></span></div>
+            <p class="verdict" id="verdict"><i class="ti ti-check" aria-hidden="true"></i> Empfehlung: nächste Runde</p>
+            <p class="scene-note" style="margin-top:12px"><i class="ti ti-quote" aria-hidden="true"></i> Belegt mit Zitaten: „Ein B2B-Portal für 40.000 Nutzer, in 6 Monaten live."</p>
+          </div>
+
+          <div class="scene" id="sc6">
+            <div class="hired">
+              <span class="hbig"><i class="ti ti-check" aria-hidden="true"></i></span>
+              <p class="ht">Lena M. · Angebot angenommen</p>
+              <p class="hs">Time-to-Hire: 11 Tage. Briefing, Transkripte und Scorecards bleiben dokumentiert im Profil.</p>
+              <a class="btn btn-primary" href="/trial-request" style="margin-top:10px">Das will ich auch</a>
+            </div>
+          </div>
+
         </div>
-        <figcaption style="font-size:12.5px;color:var(--txt4);margin-top:8px;text-align:center">Echte Ansicht: Bewerbungsübersicht mit Match-Scores</figcaption>
-      </figure>
-      <figure class="shot" style="margin:0">
-        <div style="background:#161221;border:1px solid var(--line2);border-radius:16px;padding:10px;overflow:hidden">
-          <img src="assets/produkt-sourcing.png" alt="PARL Sourcing-Agent mit abgeschlossenen Suchläufen" style="width:100%;border-radius:10px;display:block" onerror="this.closest('.shot').style.display='none'">
-        </div>
-        <figcaption style="font-size:12.5px;color:var(--txt4);margin-top:8px;text-align:center">Echte Ansicht: Sourcing-Agent mit Suchläufen</figcaption>
-      </figure>
+      </div>
+      <div class="scrolly-caption">
+        <div class="sdots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="capText">Du briefst die Rolle. Zwei Minuten, fertig.</p>
+      </div>
     </div>
+    <div class="scrolly-space" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -420,41 +480,6 @@ footer{border-top:1px solid #1e1a29;padding:44px 0 36px}
   <div class="marquee"><div class="marquee-track right" id="mqB"></div></div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2>Vom Briefing zur Einstellung</h2>
-      <p>KI-Automatisierung in jedem Schritt.</p>
-    </div>
-    <div class="flow-wrap">
-      <div class="flow-line" id="flowLine"></div>
-      <div class="flow-step reveal">
-        <div class="flow-card">
-          <span class="flow-ic"><i class="ti ti-briefcase" aria-hidden="true"></i></span>
-          <div><h3>1 · Rollen-Briefing erstellen</h3><p>Anforderungen mit KI-Unterstützung definieren: Dokument hochladen oder smartes Formular ausfüllen.</p></div>
-        </div>
-      </div>
-      <div class="flow-step reveal" style="transition-delay:.1s">
-        <div class="flow-card">
-          <span class="flow-ic"><i class="ti ti-file-text" aria-hidden="true"></i></span>
-          <div><h3>2 · Job-Assets generieren</h3><p>PARL erstellt automatisch Stellenanzeige, Kompetenzprofil und strukturierte Interviewleitfäden.</p></div>
-        </div>
-      </div>
-      <div class="flow-step reveal" style="transition-delay:.2s">
-        <div class="flow-card">
-          <span class="flow-ic"><i class="ti ti-users" aria-hidden="true"></i></span>
-          <div><h3>3 · Interviewen &amp; bewerten</h3><p>Gespräch im Tool, automatisches Transkript, transparente Scorecards. Objektiv statt Bauchgefühl.</p></div>
-        </div>
-      </div>
-      <div class="flow-step reveal" style="transition-delay:.3s">
-        <div class="flow-card">
-          <span class="flow-ic"><i class="ti ti-user-check" aria-hidden="true"></i></span>
-          <div><h3>4 · Die Besten einstellen</h3><p>Sichere Entscheidungen mit transparenten Daten, weniger Bias und kürzerer Time-to-Hire.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="sec agents-sec" id="agenten">
   <div class="wrap">
@@ -653,85 +678,55 @@ footer{border-top:1px solid #1e1a29;padding:44px 0 36px}
 
 <script>
 (function(){
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal, .flow-line').forEach(function(el){ io.observe(el); });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
-  function countUp(el,dur){
-    var target=parseInt(el.getAttribute('data-t'),10), start=null;
-    var from=parseInt(el.textContent,10); if(isNaN(from)) from=0;
-    function step(ts){ if(!start) start=ts; var p=Math.min((ts-start)/dur,1); p=1-Math.pow(1-p,3); el.textContent=Math.round(from+(target-from)*p); if(p<1) requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  }
-  var ioCnt=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ countUp(e.target,1400); ioCnt.unobserve(e.target); } });
-  },{threshold:.5});
-  document.querySelectorAll('.cnt').forEach(function(el){ ioCnt.observe(el); });
+  function countUp(el,dur){var t=parseInt(el.getAttribute('data-t'),10),s=null;var f=parseInt(el.textContent,10);if(isNaN(f))f=0;function st(ts){if(!s)s=ts;var p=Math.min((ts-s)/dur,1);p=1-Math.pow(1-p,3);el.textContent=Math.round(f+(t-f)*p);if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);}
+  var ioC=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target,1400);ioC.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('.cnt').forEach(function(el){ioC.observe(el);});
 
-  setTimeout(function(){
-    document.querySelectorAll('.pc-fill').forEach(function(b){ b.style.width=b.getAttribute('data-w')+'%'; });
-  },800);
+  setTimeout(function(){document.querySelectorAll('.hero .pc-fill').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});},800);
 
   var logos=[['ti-calendar','Google Calendar'],['ti-mail','Outlook'],['ti-mail','Gmail'],['ti-message','Slack'],['ti-users','Microsoft Teams'],['ti-video','Video Interviews'],['ti-briefcase','LinkedIn'],['ti-chart-bar','HubSpot'],['ti-cloud','Salesforce'],['ti-file-text','Notion']];
-  function intCard(l){ return '<span class="int-card"><i class="ti '+l[0]+'" aria-hidden="true"></i>'+l[1]+'</span>'; }
+  function intCard(l){return '<span class="int-card"><i class="ti '+l[0]+'" aria-hidden="true"></i>'+l[1]+'</span>';}
   var row=logos.map(intCard).join('');
-  var a=document.getElementById('mqA'), b=document.getElementById('mqB');
-  if(a) a.innerHTML=row+row;
-  if(b) b.innerHTML=row+row;
+  var a=document.getElementById('mqA'),b=document.getElementById('mqB');
+  if(a)a.innerHTML=row+row;
+  if(b)b.innerHTML=row+row;
 
-  var lines=[["AM","Was war dein größter Produkt-Launch?","#534AB7"],["LM","Ein B2B-Portal für 40.000 Nutzer, in 6 Monaten live.","#0F6E56"],["AM","Wie hast du Stakeholder eingebunden?","#534AB7"],["LM","Wöchentliche Demos und ein klares Priorisierungs-Board.","#0F6E56"]];
-  var ivPlayed=false;
-  function playTranscript(){
-    var box=document.getElementById('transcript'); if(!box) return;
-    box.innerHTML='';
-    lines.forEach(function(l,i){
-      setTimeout(function(){
-        var d=document.createElement('div');
-        d.className='tline';
-        d.innerHTML='<span class="tav" style="background:'+l[2]+'">'+l[0]+'</span><p>'+l[1]+'</p>';
-        box.appendChild(d);
-      },400+i*1400);
-    });
-  }
-  function playScores(){
-    document.querySelectorAll('.scBar').forEach(function(bar){ bar.style.width='0'; });
-    var v=document.getElementById('verdict'); if(v){ v.style.opacity='0'; v.style.transition='none'; }
-    setTimeout(function(){
-      document.querySelectorAll('.scBar').forEach(function(bar){ bar.style.width=bar.getAttribute('data-w')+'%'; });
-      document.querySelectorAll('.scNum').forEach(function(el){ countUp(el,1200); });
-      if(v){ setTimeout(function(){ v.style.transition='opacity .5s'; v.style.opacity='1'; },1300); }
-    },5600);
-  }
-  var ioIv=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting && !ivPlayed){
-        ivPlayed=true;
-        playTranscript(); playScores();
-        setInterval(function(){ playTranscript(); playScores(); },12000);
-        ioIv.unobserve(e.target);
-      }
-    });
-  },{threshold:.3});
-  var ivSec=document.getElementById('interviews'); if(ivSec) ioIv.observe(ivSec);
-
-  function playMara(){
-    var typing=document.getElementById('mTyping'), reply=document.getElementById('mReply');
-    if(!typing||!reply) return;
-    typing.style.display='inline-flex'; reply.style.display='none';
-    setTimeout(function(){ typing.style.display='none'; reply.style.display='inline-block'; reply.style.animation='popIn .4s both'; },2600);
-  }
+  function playMara(){var t=document.getElementById('mTyping'),r=document.getElementById('mReply');if(!t||!r)return;t.style.display='inline-flex';r.style.display='none';setTimeout(function(){t.style.display='none';r.style.display='inline-block';r.style.animation='popIn .4s both';},2600);}
   var maraPlayed=false;
-  var ioMara=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting && !maraPlayed){
-        maraPlayed=true;
-        playMara(); setInterval(playMara,9000);
-        ioMara.unobserve(e.target);
-      }
-    });
-  },{threshold:.3});
-  var maraCard=document.querySelector('.mara-card'); if(maraCard) ioMara.observe(maraCard);
+  var ioM=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!maraPlayed){maraPlayed=true;playMara();setInterval(playMara,9000);ioM.unobserve(e.target);}});},{threshold:.3});
+  var mc=document.querySelector('.mara-card');if(mc)ioM.observe(mc);
+
+  var scrolly=document.getElementById('scrolly');
+  var scenes=Array.prototype.slice.call(document.querySelectorAll('.scene'));
+  var caps=['Du briefst die Rolle. Zwei Minuten, fertig.','PARL erstellt Anzeige, Kompetenzprofil und Interviewleitfaden.','Der Sourcing-Agent füllt die Pipeline und priorisiert.','Das Interview läuft direkt im Tool. Mit Live-Transkript.','Die KI wertet gegen dein Briefing aus. Nachvollziehbar.','Du entscheidest. PARL dokumentiert alles.'];
+  var titles=['PARL · Neues Briefing','PARL · Generierte Assets','PARL · Pipeline · Senior PM','PARL · Interview mit Lena M.','PARL · KI-Auswertung','PARL · Entscheidung'];
+  var lines=[["AM","Was war dein größter Produkt-Launch?","#534AB7"],["LM","Ein B2B-Portal für 40.000 Nutzer, in 6 Monaten live.","#0F6E56"],["AM","Wie hast du Stakeholder eingebunden?","#534AB7"],["LM","Wöchentliche Demos und ein klares Priorisierungs-Board.","#0F6E56"]];
+  var cur=-1,played={};
+  function fx(i){
+    if(i===2){document.querySelectorAll('#sc3 .pc-fill').forEach(function(bar,k){setTimeout(function(){bar.style.width=bar.getAttribute('data-w')+'%';},200+k*150);});}
+    if(i===3){var box=document.getElementById('transcript');if(!box)return;box.innerHTML='';lines.forEach(function(l,k){setTimeout(function(){var d=document.createElement('div');d.className='tline';d.innerHTML='<span class="tav" style="background:'+l[2]+'">'+l[0]+'</span><p>'+l[1]+'</p>';box.appendChild(d);},300+k*1100);});}
+    if(i===4){document.querySelectorAll('#sc5 .scBar').forEach(function(bar){setTimeout(function(){bar.style.width=bar.getAttribute('data-w')+'%';},250);});document.querySelectorAll('#sc5 .scNum').forEach(function(el){countUp(el,1100);});var v=document.getElementById('verdict');if(v){v.style.opacity='0';setTimeout(function(){v.style.transition='opacity .5s';v.style.opacity='1';},1400);}}
+  }
+  function setScene(i){
+    if(i===cur)return;cur=i;
+    scenes.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    var c=document.getElementById('capText');if(c)c.textContent=caps[i];
+    var t=document.getElementById('pwinTitle');if(t)t.textContent=titles[i];
+    document.querySelectorAll('.sdots span').forEach(function(d,k){d.classList.toggle('on',k<=i);});
+    if(!played[i]){played[i]=true;fx(i);}
+  }
+  function onScroll(){
+    if(!scrolly)return;
+    var r=scrolly.getBoundingClientRect();
+    var total=r.height-innerHeight;
+    if(total<=0)return;
+    var prog=Math.min(Math.max(-r.top/total,0),0.9999);
+    setScene(Math.floor(prog*6));
+  }
+  if(scrolly){addEventListener('scroll',function(){requestAnimationFrame(onScroll);},{passive:true});onScroll();}
 })();
 </script>
 </body>
